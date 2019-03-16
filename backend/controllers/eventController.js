@@ -28,4 +28,4 @@ authRouter.put('/', async (req, res) => {
 });
 
 
-module.exports = (app) => app.use('/event', authRouter);
+module.exports = (app) => app.use('/api/event', authRouter);

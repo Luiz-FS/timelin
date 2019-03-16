@@ -33,7 +33,7 @@
                 url: "/login",
                 views: {
                     content: {
-                        templateUrl: "auth/login/html",
+                        templateUrl: "auth/login.html",
                         controller: "LoginController as loginCtrl"
                     }
                 }
@@ -43,5 +43,22 @@
         $urlRouterProvider.otherwise("/");
 
         $locationProvider.html5Mode(true);
+        $httpProvider.interceptors.push('BearerAuthInterceptor');
+    });
+
+    app.factory('BearerAuthInterceptor', function ($q, $injector) {
+        return {
+            request: function(config) {
+                const AuthService = $injector.get('AuthService');
+                Utils.updateBackendUrl(config);
+
+                if (AuthService.getCurrentUser()) {
+                    const { token } = AuthService.getCurrentUser();
+                    config.headers.Authorization = `Bearer ${token}`;
+                }
+
+                return config || $q.when(config);
+            }
+        };
     });
 })();

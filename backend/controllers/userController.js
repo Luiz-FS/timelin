@@ -34,4 +34,4 @@ authRouter.get('/events', async (req, res) => {
     return res.send(rows);
 });
 
-module.exports = app => app.use('/user', openRouter, authRouter);
+module.exports = app => app.use('/api/user', openRouter, authRouter);

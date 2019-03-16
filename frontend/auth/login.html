@@ -1,1 +1,17 @@
-<h1>Login page</h1>
+<div style="display: grid; align-content: center; justify-content: center; height: 100%;">
+    <md-card>
+        <form style="display: grid;" ng-submit="loginCtrl.login()">
+            <md-input-container>
+                <label>Email</label>
+                <input type="email" ng-model="loginCtrl.credentials.email" required/>
+            </md-input-container>
+            <md-input-container>
+                <label>Senha</label>
+                <input type="password" ng-model="loginCtrl.credentials.password" required/>
+            </md-input-container>
+            <md-button type="submit" md-colors="{background: 'teal-500'}">
+                ENTRAR
+            </md-button>
+        </form>
+    </md-card>
+</div>

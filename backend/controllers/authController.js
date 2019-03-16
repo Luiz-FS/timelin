@@ -19,4 +19,4 @@ authRouter.post('/', async (req, res) => {
     res.send({user: {name, email, token}});
 });
 
-module.exports = (app) => app.use('/auth', authRouter);
+module.exports = (app) => app.use('/api/auth', authRouter);
