@@ -1,3 +1,5 @@
+CREATE EXTENSION pgcrypto;
+
 CREATE TABLE usermodel (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
