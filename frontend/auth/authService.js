@@ -15,6 +15,11 @@
             });
         };
 
+        service.logout = function logout() {
+            localStorage.userInfo = null;
+            currentUser = null;
+        };
+
         service.save = function save() {
             localStorage.userInfo = JSON.stringify(currentUser);
         };

@@ -9,8 +9,8 @@
 
 
         eventsCtrl.create = function create(ev) {
-            return EventsService.showCreateEvent(ev).then(function(event) {
-                  eventsCtrl.events.push(event);
+            return EventsService.showCreateEvent(ev).then(function() {
+                  getEvents();
               }).catch(() => {});
         };
 
