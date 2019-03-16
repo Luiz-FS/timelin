@@ -60,7 +60,7 @@
                 const AuthService = $injector.get('AuthService');
                 Utils.updateBackendUrl(config);
 
-                if (AuthService.getCurrentUser()) {
+                if (AuthService.isLoggedIn()) {
                     const { token } = AuthService.getCurrentUser();
                     config.headers.Authorization = `Bearer ${token}`;
                 }

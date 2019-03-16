@@ -23,6 +23,10 @@
             return currentUser;
         };
 
+        service.isLoggedIn = function isLoggedIn() {
+            return (currentUser) ? true: false;
+        };
+
         (function init() {
             const userInfo = JSON.parse(localStorage.userInfo);
             if (userInfo) {

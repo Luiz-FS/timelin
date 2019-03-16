@@ -1,0 +1,30 @@
+<md-dialog style="width: 40%;">
+    <div style="padding: 16px;">
+        <h2 style="text-align: center;">Criar novo evento</h2>
+        <form style="display: grid;" ng-submit="createEventCtrl.create()">
+            <md-input-container>
+                <label>Nome do evento</label>
+                <input type="text" ng-model="createEventCtrl.event.name" required/>
+            </md-input-container>
+            <md-input-container>
+                <label>Descrição</label>
+                <textarea ng-model="createEventCtrl.event.description" required></textarea>
+            </md-input-container>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 8px;">
+                <md-input-container>
+                    <label>Cor</label>
+                    <input type="color" ng-model="createEventCtrl.event.color" required/>
+                </md-input-container>
+                <md-input-container>
+                    <label>Data do evento</label>
+                    <input type="date" ng-model="createEventCtrl.event.event_date" required/>
+                </md-input-container>
+            </div>
+
+            <div style="display: grid; justify-content: end; grid-template-columns: auto auto;">
+                <md-button md-colors="{background: 'default-grey-400'}" ng-click="createEventCtrl.cancel()">CANCELAR</md-button>
+                <md-button type="submit" md-colors="{background: 'default-teal-500'}">SALVAR</md-button>
+            </div>
+        </form>
+    </div>
+</md-dialog>

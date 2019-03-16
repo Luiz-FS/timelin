@@ -9,10 +9,10 @@ authRouter.use(authMiddleware);
 authRouter.post('/', async (req, res) => {
     const userId = req.idLogged;
     const { body } = req;
-    const { name, description, date } = body;
-    await Event.create(name, description, date, userId);
+    const { name, description, event_date , color } = body;
+    await Event.create(name, description, event_date, color, userId);
 
-    res.send({event: {name, description, date}});
+    res.send({event: {name, description, event_date, color}});
 });
 
 authRouter.put('/', async (req, res) => {

@@ -12,5 +12,11 @@
                 return $state.go("app.events");
             });
         };
+
+        loginCtrl.$onInit = function $onInit() {
+            if (AuthService.isLoggedIn()) {
+                $state.go("app.events");
+            }
+        };
     }]);
 })();

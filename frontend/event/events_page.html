@@ -1,10 +1,10 @@
 <div style="display: grid; justify-content: center; grid-template-columns: 50%;">
-    <event event="event" ng-repeat="event in eventsCtrl.events"></event>
+    <event event="event" ng-repeat="event in eventsCtrl.events | orderBy: '-event_date'"></event>
 </div>
 <md-fab-speed-dial class="md-fab-bottom-right">
     <md-fab-trigger>
         <md-button aria-label="menu" class="md-fab md-primary"
-            md-colors="{background: 'light-green-600'}">
+            md-colors="{background: 'light-green-600'}" ng-click="eventsCtrl.create($event)">
         <md-icon>add</md-icon>
         </md-button>
     </md-fab-trigger>

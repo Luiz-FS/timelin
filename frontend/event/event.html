@@ -1,4 +1,12 @@
-<md-card style="display: grid; justify-content: center;">
-    <h2>{{eventCtrl.event.name}}</h2>
-    <p>{{eventCtrl.event.description}}</p>
+<md-card id="{{'event-' + eventCtrl.event.id}}" style="
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 0 16px;
+    grid-template-areas: '. name date' 'description description description';"
+    ng-click="eventCtrl.showDescription()">
+    <h2 style="grid-area: name;">{{eventCtrl.event.name}}</h2>
+    <span style="grid-area: date; justify-self: end; font-size: 13px;">{{eventCtrl.formatDate(eventCtrl.event.event_date)}}</span>
+    <p style="grid-area: description;" ng-if="!eventCtrl.hideDescription">{{eventCtrl.event.description}}</p>
 </md-card>

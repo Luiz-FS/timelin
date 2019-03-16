@@ -12,6 +12,7 @@ CREATE TABLE event (
     name TEXT NOT NULL,
     description TEXT NOT NULL,
     event_date date NOT NULL,
+    color TEXT DEFAULT '#FFFFFF',
     user_id INTEGER REFERENCES usermodel(id),
     PRIMARY KEY (id, user_id)
 );
