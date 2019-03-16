@@ -3,10 +3,26 @@
 
     const app = angular.module('app');
 
-    app.service('EventsService', ['$http', function($http) {
+    app.service('EventsService', ['$http', '$mdDialog', function($http, $mdDialog) {
         const service = this;
         const eventsUri = '/api/user/events';
         const eventUri = '/api/event';
+
+        service.showCreateEvent = function showCreateEvent(ev, event) {
+            return $mdDialog.show({
+                controller: 'CreateEventController',
+                controllerAs: 'createEventCtrl',
+                templateUrl: 'event/create_event_dialog.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                locals: {
+                    event: (event) ? event : {},
+                    isEditing: (event) ? true: false
+                },
+                clickOutsideToClose:true,
+                fullscreen: false
+              });
+        };
 
         service.getEvents = function getEvents() {
             return $http.get(eventsUri).then(response => response.data);

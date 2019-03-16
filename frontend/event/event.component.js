@@ -34,19 +34,7 @@
             };
 
             eventCtrl.edit = function edit(ev) {
-                return $mdDialog.show({
-                    controller: 'CreateEventController',
-                    controllerAs: 'createEventCtrl',
-                    templateUrl: 'event/create_event_dialog.html',
-                    parent: angular.element(document.body),
-                    targetEvent: ev,
-                    locals: {
-                        event: eventCtrl.event,
-                        isEditing: true
-                    },
-                    clickOutsideToClose:true,
-                    fullscreen: false
-                  }).then(function(event) {
+                return EventsService.showCreateEvent(ev, eventCtrl.event).then(function(event) {
                       eventCtrl.event.name = event.name;
                       eventCtrl.event.event_date = new Date(event.event_date);
                       eventCtrl.event.description = event.description;
