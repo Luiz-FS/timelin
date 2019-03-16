@@ -37,6 +37,14 @@
                         controller: "LoginController as loginCtrl"
                     }
                 }
+            }).state("app.events", {
+                url: "/events",
+                views: {
+                    content: {
+                        templateUrl: "event/events_page.html",
+                        controller: "EventsController as eventsCtrl"
+                    }
+                }
             });
         
 
