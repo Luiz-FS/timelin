@@ -1,10 +1,15 @@
 const express = require('express');
+const authMiddleware = require('../middlewares/auth');
 const User = require('../models/user');
 
+const authRouter = express.Router();
 const openRouter = express.Router();
 
-openRouter.get('/', async (req, res) => {
-    const { rows } = await User.findByName('Luiz');
+authRouter.use(authMiddleware);
+
+authRouter.get('/', async (req, res) => {
+    const id = req.idLogged;
+    const { rows } = await User.findById(id);
     res.send({user: rows[0]});
 });
 
@@ -21,4 +26,4 @@ openRouter.post('/', async (req, res) => {
     }
 });
 
-module.exports = app => app.use('/user', openRouter);
+module.exports = app => app.use('/user', openRouter, authRouter);
