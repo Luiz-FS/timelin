@@ -15,16 +15,28 @@ authRouter.post('/', async (req, res) => {
     res.send({event: {name, description, event_date, color}});
 });
 
-authRouter.put('/', async (req, res) => {
+authRouter.put('/:eventID', async (req, res) => {
     const { body } = req;
-    const { id, name, description, date } = body;
+    const { name, description, event_date, color } = body;
+    const id = req.params.eventID;
     const result =  await Event.findById(id);
 
     if (result.rowCount == 0)
         return res.status(404).send({msg: 'Event not found'});
 
-    await Event.update(id, name, description, date);
-    res.send({event: {id, name, description, date}});
+    await Event.update(id, name, description, event_date, color);
+    res.send({event: {id, name, description, event_date, color}});
+});
+
+authRouter.delete('/:eventID', async (req, res) => {
+    const id = req.params.eventID;
+    const result =  await Event.findById(id);
+
+    if (result.rowCount == 0)
+        return res.status(404).send({msg: 'Event not found'});
+    
+    await Event.delete(id);
+    res.send();
 });
 
 

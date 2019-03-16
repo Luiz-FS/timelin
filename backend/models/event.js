@@ -20,6 +20,11 @@ const event = {
         const updateText = "UPDATE event SET name = $1, description = $2, event_date = $3, color = $4 WHERE id = $5";
         const result = await db.query(updateText, [name, description, date, color, id]);
         return result;
+    },
+    delete: async (id) => {
+        const deleteText = "DELETE FROM event WHERE id = $1";
+        const result = await db.query(deleteText, [id]);
+        return result;
     }
 };
 

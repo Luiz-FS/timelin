@@ -15,5 +15,13 @@
         service.createEvent = function createEvent(event) {
             return $http.post(eventUri, event).then(response => response.data.event);
         };
+
+        service.updateEvent = function updateEvent(eventId, event) {
+            return $http.put(`${eventUri}/${eventId}`, event).then(response => response.data.event);
+        };
+
+        service.deleteEvent = function deleteEvent(eventId) {
+            return $http.delete(`${eventUri}/${eventId}`);
+        };
     }]);
 })();

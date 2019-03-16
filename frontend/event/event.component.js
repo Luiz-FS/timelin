@@ -4,7 +4,7 @@
     const app = angular.module('app');
 
     app
-        .controller('EventController', ['$element', function($element) {
+        .controller('EventController', ['$element', '$mdDialog', '$rootScope', 'EventsService', function($element, $mdDialog, $rootScope, EventsService) {
             const eventCtrl = this;
             eventCtrl.hideDescription = true;
 
@@ -16,9 +16,52 @@
                 eventCtrl.hideDescription = !eventCtrl.hideDescription;
             };
 
-            eventCtrl.$onInit = function $onInit() {
+            eventCtrl.confirmRemove = function confirmRemove(ev) {
+                var confirm = $mdDialog.confirm()
+                    .title('Você realmente deseja remover esse evento?')
+                    .textContent('Ao remover não será mais possível restaurá-lo.')
+                    .ariaLabel('Remover Evento')
+                    .targetEvent(ev)
+                    .ok('CONFIRMAR')
+                    .cancel('CANCELAR');
+
+                return $mdDialog.show(confirm).then(function() {
+                    return EventsService.deleteEvent(eventCtrl.event.id).then(() => {
+                        $rootScope.$emit('REMOVE_EVENT');
+                    });
+                }, function() {
+                });
+            };
+
+            eventCtrl.edit = function edit(ev) {
+                return $mdDialog.show({
+                    controller: 'CreateEventController',
+                    controllerAs: 'createEventCtrl',
+                    templateUrl: 'event/create_event_dialog.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    locals: {
+                        event: eventCtrl.event,
+                        isEditing: true
+                    },
+                    clickOutsideToClose:true,
+                    fullscreen: false
+                  }).then(function(event) {
+                      eventCtrl.event.name = event.name;
+                      eventCtrl.event.event_date = new Date(event.event_date);
+                      eventCtrl.event.description = event.description;
+                      eventCtrl.event.color = event.color;
+                      changeCardColor();
+                  }).catch(() => {});
+            };
+
+            function changeCardColor() {
                 const card = $element[0].children[0];
                 card.style['background-color'] = eventCtrl.event.color;
+            };
+
+            eventCtrl.$onInit = function $onInit() {
+                changeCardColor();
                 eventCtrl.event.event_date = new Date(eventCtrl.event.event_date);
             };
         }])

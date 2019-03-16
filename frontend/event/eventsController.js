@@ -3,7 +3,7 @@
 
     const app = angular.module('app');
 
-    app.controller('EventsController', ['EventsService', "$mdDialog", function(EventsService, $mdDialog) {
+    app.controller('EventsController', ['EventsService', "$mdDialog", '$rootScope',  function(EventsService, $mdDialog, $rootScope) {
         const eventsCtrl = this;
         eventsCtrl.events = [];
 
@@ -15,6 +15,10 @@
                 templateUrl: 'event/create_event_dialog.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
+                locals: {
+                    event: {},
+                    isEditing: false
+                },
                 clickOutsideToClose:true,
                 fullscreen: false
               }).then(function(event) {
@@ -22,10 +26,18 @@
               }).catch(() => {});
         };
 
-        eventsCtrl.$onInit = function $onInit() {
+        function getEvents() {
             return EventsService.getEvents().then(response => {
                 eventsCtrl.events = response;
+                return response;
             });
+        };
+
+        eventsCtrl.$onInit = function $onInit() {
+            $rootScope.$on('REMOVE_EVENT', () => {
+                return getEvents();
+            });
+            return getEvents();
         };
     }]);
 })();

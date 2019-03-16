@@ -1,6 +1,7 @@
 <md-dialog style="width: 40%;">
     <div style="padding: 16px;">
-        <h2 style="text-align: center;">Criar novo evento</h2>
+        <h2 style="text-align: center;" ng-if="!createEventCtrl.isEditing">Criar novo evento</h2>
+        <h2 style="text-align: center;" ng-if="createEventCtrl.isEditing">Editar evento</h2>
         <form style="display: grid;" ng-submit="createEventCtrl.create()">
             <md-input-container>
                 <label>Nome do evento</label>
