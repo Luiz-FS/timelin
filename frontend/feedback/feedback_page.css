@@ -1,0 +1,16 @@
+.feedback-page-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 40%;
+    grid-row-gap: 10px;
+}
+
+.feedback-page__title {
+    text-align: center;
+}
+
+.feedback-page__comment {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    align-items: center;
+}

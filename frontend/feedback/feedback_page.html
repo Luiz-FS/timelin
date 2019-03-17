@@ -1,8 +1,8 @@
-<h1 style="text-align: center;">Avaliações dos usuários</h1>
-<div style="display: grid; justify-content: center; grid-template-columns: 40%; grid-row-gap: 10px;">
+<h1 class="feedback-page__title">Avaliações dos usuários</h1>
+<div class="feedback-page-container">
     <feedback feedback="feedback" ng-repeat="feedback in feedbackCtrl.feedbacks"></feedback>
     <form ng-submit="feedbackCtrl.create()" ng-if="feedbackCtrl.isLoggedIn()">
-        <div style="display: grid; grid-template-columns: 1fr min-content; align-items: center;">
+        <div class="feedback-page__comment">
             <md-input-container>
                 <label>Comentário</label>
                 <textarea ng-model="feedbackCtrl.feedback.description" required></textarea>
