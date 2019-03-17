@@ -41,8 +41,8 @@
         };
 
         (function init() {
-            const userInfo = JSON.parse(localStorage.userInfo);
-            if (userInfo) {
+            if (localStorage.userInfo) {
+                const userInfo = JSON.parse(localStorage.userInfo);
                 currentUser = userInfo;
             }
         })();
