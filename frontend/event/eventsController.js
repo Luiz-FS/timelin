@@ -6,6 +6,7 @@
     app.controller('EventsController', ['EventsService', '$rootScope',  function(EventsService, $rootScope) {
         const eventsCtrl = this;
         eventsCtrl.events = [];
+        eventsCtrl.isLoading = false;
 
 
         eventsCtrl.create = function create(ev) {
@@ -15,7 +16,9 @@
         };
 
         function getEvents() {
+            eventsCtrl.isLoading = true;
             return EventsService.getEvents().then(response => {
+                eventsCtrl.isLoading = false;
                 eventsCtrl.events = response;
                 return response;
             });

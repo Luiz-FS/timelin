@@ -1,15 +1,20 @@
-<h1 class="feedback-page__title">Avaliações dos usuários</h1>
-<div class="feedback-page-container">
-    <feedback feedback="feedback" ng-repeat="feedback in feedbackCtrl.feedbacks"></feedback>
-    <form ng-submit="feedbackCtrl.create()" ng-if="feedbackCtrl.isLoggedIn()">
-        <div class="feedback-page__comment">
-            <md-input-container>
-                <label>Comentário</label>
-                <textarea ng-model="feedbackCtrl.feedback.description" required></textarea>
-            </md-input-container>
-            <md-button type="submit">
-                <md-icon>send</md-icon>
-            </md-button>
-        </div>
-    </form>
+<div ng-if="!feedbackCtrl.isLoading">
+    <h1 class="feedback-page__title">Avaliações dos usuários</h1>
+    <div class="feedback-page-container">
+        <feedback feedback="feedback" ng-repeat="feedback in feedbackCtrl.feedbacks"></feedback>
+        <form ng-submit="feedbackCtrl.create()" ng-if="feedbackCtrl.isLoggedIn()">
+            <div class="feedback-page__comment">
+                <md-input-container>
+                    <label>Comentário</label>
+                    <textarea ng-model="feedbackCtrl.feedback.description" required></textarea>
+                </md-input-container>
+                <md-button type="submit">
+                    <md-icon>send</md-icon>
+                </md-button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="feedback-page--loading" ng-if="feedbackCtrl.isLoading">
+    <md-progress-circular md-mode="indeterminate" md-diameter="96"></md-progress-circular>
 </div>

@@ -1,8 +1,11 @@
-<div class="events-timeline" ng-if="eventsCtrl.events.length !== 0">
+<div class="events-timeline" ng-if="eventsCtrl.events.length !== 0  && !eventsCtrl.isLoading">
     <event event="event" ng-repeat="event in eventsCtrl.events | orderBy: '-event_date'"></event>
 </div>
-<div class="events-timeline--empty" ng-if="eventsCtrl.events.length === 0">
+<div class="events-timeline--empty" ng-if="eventsCtrl.events.length === 0 && !eventsCtrl.isLoading">
     <h1>Ainda não há eventos a serem exibidos</h1>
+</div>
+<div class="events-timeline--empty" ng-if="eventsCtrl.isLoading">
+    <md-progress-circular md-mode="indeterminate" md-diameter="96"></md-progress-circular>
 </div>
 <md-fab-speed-dial class="md-fab-bottom-right">
     <md-fab-trigger>

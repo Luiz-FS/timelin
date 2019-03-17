@@ -8,6 +8,7 @@
         const currentUser = AuthService.getCurrentUser();
         feedbackCtrl.feedbacks = [];
         feedbackCtrl.feedback = {};
+        feedbackCtrl.isLoading = false;
 
         feedbackCtrl.create = function create() {
             return FeedbackService.createFeedback(feedbackCtrl.feedback).then(feedback => {
@@ -30,7 +31,9 @@
                 MessageService.showToast("Logue-se na aplicação para deixar sua avaliação");
             }
 
+            feedbackCtrl.isLoading = true;
             return FeedbackService.getAllFeedbacks().then(feedbacks => {
+                feedbackCtrl.isLoading = false;
                 feedbackCtrl.feedbacks = feedbacks;
                 return feedbacks;
             });
