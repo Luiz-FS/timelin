@@ -25,6 +25,21 @@ const db = require('../db');
         const queryText = "SELECT id, name, email FROM usermodel WHERE email = $1 AND password = crypt($2, password)";
         const result = await db.query(queryText, [email, password]);
         return result;
+    },
+    checkCredentialsById: async (id, password) => {
+        const queryText = "SELECT id FROM usermodel WHERE id = $1 AND password = crypt($2, password)";
+        const result = await db.query(queryText, [id, password]);
+        return result;
+    },
+    update: async (id, name, email) => {
+        const updateText = "UPDATE usermodel SET name = $1, email = $2 WHERE id = $3";
+        const result = await db.query(updateText, [name, email, id]);
+        return result;
+    },
+    updatePassword: async (id, password) => {
+        const updateText = "UPDATE usermodel SET password = crypt($1, gen_salt('bf')) WHERE id = $2";
+        const result = await db.query(updateText, [password, id]);
+        return result;
     }
 };
 

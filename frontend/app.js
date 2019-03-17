@@ -45,6 +45,14 @@
                         controller: "EventsController as eventsCtrl"
                     }
                 }
+            }).state("app.user", {
+                url: '/user',
+                views: {
+                    content: {
+                        templateUrl: "user/user_details.html",
+                        controller: "UserDetailsController as userDetailsCtrl"
+                    }
+                }
             });
         
 

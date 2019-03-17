@@ -1,0 +1,74 @@
+<div style="display: grid; grid-template-rows: min-content 1fr 1fr; height: 100%;">
+    <h1 style="text-align: center;">Dados da conta</h1>
+    <div style="
+        display: grid;
+        justify-content: center;
+        grid-column-gap: 20px;
+        grid-template-columns: auto auto;
+        align-items: center;
+        grid-template-areas: 'name u-name' 'email u-email' 'action action';" ng-if="!userDetailsCtrl.isUpdatingAttributes && !userDetailsCtrl.isUpdatingPassword">
+        <b style="grid-area: name;">Nome:</b>
+        <p style="grid-area: u-name;">{{userDetailsCtrl.user.name}}</p>
+        <b style="grid-area: email;">Email:</b>
+        <p style="grid-area: u-email;">{{userDetailsCtrl.user.email}}</p>
+        <div style="grid-area: action;">
+            <md-button ng-click="userDetailsCtrl.isUpdatingPassword = true" md-colors="{background: 'teal-500'}">
+                Mudar senha
+            </md-button>
+            <md-button ng-click="userDetailsCtrl.isUpdatingAttributes = true" md-colors="{background: 'teal-500'}">
+                Editar
+            </md-button>
+        </div>
+    </div>
+    <div ng-if="userDetailsCtrl.isUpdatingAttributes && !userDetailsCtrl.isUpdatingPassword">
+        <form style="
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 30%;" ng-submit="userDetailsCtrl.saveUser()">
+            <md-input-container>
+                <label>Nome</label>
+                <input type="text" ng-model="userDetailsCtrl.userCopy.name" required/>
+            </md-input-container>
+            <md-input-container>
+                <label>Email</label>
+                <input type="email" ng-model="userDetailsCtrl.userCopy.email" required/>
+            </md-input-container>
+            <div style="justify-self: end;">
+                <md-button ng-click="userDetailsCtrl.cancelUpdate()" md-colors="{background: 'grey-400'}">
+                    cancelar
+                </md-button>
+                <md-button type="submit" md-colors="{background: 'teal-500'}">
+                    salvar
+                </md-button>
+            </div>
+        </form>
+    </div>
+
+    <div ng-if="userDetailsCtrl.isUpdatingPassword && !userDetailsCtrl.isUpdatingAttributes">
+        <form style="
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 30%;" ng-submit="userDetailsCtrl.updatePassword()">
+            <md-input-container>
+                <label>Senha atual</label>
+                <input type="password" ng-model="userDetailsCtrl.actualPass" required/>
+            </md-input-container>
+            <md-input-container>
+                <label>Nova Senha</label>
+                <input type="password" ng-model="userDetailsCtrl.newPass" required/>
+            </md-input-container>
+            <md-input-container>
+                <label>Confirmar Senha</label>
+                <input type="password" ng-model="userDetailsCtrl.confirmPass" required/>
+            </md-input-container>
+            <div style="justify-self: end;">
+                <md-button ng-click="userDetailsCtrl.cancelUpdate()" md-colors="{background: 'grey-400'}">
+                    cancelar
+                </md-button>
+                <md-button type="submit" md-colors="{background: 'teal-500'}">
+                    salvar
+                </md-button>
+            </div>
+        </form>
+    </div>
+</div>

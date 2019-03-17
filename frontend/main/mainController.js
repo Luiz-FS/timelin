@@ -6,9 +6,17 @@
     app.controller('MainController', ['AuthService', '$state', function(AuthService, $state) {
         const mainCtrl = this;
 
+        mainCtrl.goToUserPage = function goToUserPage() {
+            return $state.go('app.user');
+        };
+
+        mainCtrl.goToTimeline = function goToTimeline() {
+            return $state.go('app.events');
+        };
+
         mainCtrl.logout = function logout() {
             AuthService.logout();
-            $state.go('app.login');
+            return $state.go('app.login');
         };
     }]);
 })();

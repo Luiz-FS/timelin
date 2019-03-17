@@ -1,19 +1,19 @@
 <div style="display: grid; grid-template-rows: min-content 1fr; height: 100%;">
     <md-toolbar class="md-hue-2">
         <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
-            <md-icon>menu</md-icon>
-        </md-button>
+            <div flex md-truncate>
+                <md-button aria-label="Linha do tempo" ng-click="mainCtrl.goToTimeline()">
+                    linha do tempo
+                </md-button>
+            </div>
 
-        <h2 flex md-truncate>linha do tempo</h2>
+            <md-button aria-label="Página do usuário" ng-click="mainCtrl.goToUserPage()">
+                conta
+            </md-button>
 
-        <md-button aria-label="Favorite">
-            conta
-        </md-button>
-
-        <md-button aria-label="More" ng-click="mainCtrl.logout()">
-            sair
-        </md-button>
+            <md-button aria-label="More" ng-click="mainCtrl.logout()">
+                sair
+            </md-button>
         </div>
     </md-toolbar>
     <div ui-view="content" style="overflow-y: auto; max-height: 100%;"></div>

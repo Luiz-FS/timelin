@@ -14,6 +14,27 @@ authRouter.get('/', async (req, res) => {
     return res.send({user: rows[0]});
 });
 
+authRouter.put('/', async (req, res) => {
+    const id = req.idLogged;
+    const { name, email } = req.body;
+    
+    await User.update(id, name, email);
+    return res.send({user: {name, email}});
+});
+
+authRouter.put('/reset-password', async (req, res) => {
+    const id = req.idLogged;
+    const { actualPass, newPass } = req.body;
+    const result = await User.checkCredentialsById(id, actualPass);
+
+    if (result.rowCount === 0) {
+        return res.status(403).send({msg: 'Invalid password'});
+    }
+
+    await User.updatePassword(id, newPass);
+    return res.send();
+});
+
 openRouter.post('/', async (req, res) => {
     const { body } = req;
     const { name, email, password } = body;
