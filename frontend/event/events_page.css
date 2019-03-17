@@ -1,0 +1,17 @@
+.events-timeline {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 50%;
+}
+
+.events-timeline--empty {
+    display: grid;
+    justify-content: center;
+    height: 100%;
+    grid-template-columns: 50%;
+    align-content: center;
+}
+
+.events-timeline--empty > h1 {
+    color: rgba(0, 0, 0, .6);
+}
