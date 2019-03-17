@@ -1,0 +1,7 @@
+.feedback-container {
+    display: grid;
+}
+
+.feedback-container > hr {
+    width: 100%;
+}
