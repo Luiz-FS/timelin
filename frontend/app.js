@@ -53,6 +53,14 @@
                         controller: "UserDetailsController as userDetailsCtrl"
                     }
                 }
+            }).state("app.feedback", {
+                url: '/feedback',
+                views: {
+                    content: {
+                        templateUrl: "/feedback/feedback_page.html",
+                        controller: "FeedbackController as feedbackCtrl"
+                    }
+                }
             });
         
 
