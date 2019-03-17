@@ -89,7 +89,8 @@
     app.run(function authInterceptor(AuthService, $transitions) {
         var ignored_routes = [
             "app.login",
-            "app.landing"
+            "app.landing",
+            "app.feedback"
         ];
 
         $transitions.onBefore({

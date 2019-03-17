@@ -3,7 +3,7 @@
 
     const app = angular.module('app');
 
-    app.controller('UserDetailsController', ['UserService', function(UserService) {
+    app.controller('UserDetailsController', ['UserService', 'MessageService', function(UserService, MessageService) {
         const userDetailsCtrl = this;
         userDetailsCtrl.user = {};
         userDetailsCtrl.userCopy = {};
@@ -28,7 +28,11 @@
 
                 return UserService.updatePassword(credentials).then(() => {
                     userDetailsCtrl.isUpdatingPassword = false;
+                }).catch(response => {
+                    MessageService.showToast(response.data.msg);
                 });
+            } else {
+                MessageService.showToast("As senhas não correspondem");
             }
         };
 

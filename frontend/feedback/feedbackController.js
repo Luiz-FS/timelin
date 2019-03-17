@@ -3,7 +3,7 @@
 
     const app = angular.module('app');
 
-    app.controller('FeedbackController', ['FeedbackService', 'AuthService', function(FeedbackService, AuthService) {
+    app.controller('FeedbackController', ['FeedbackService', 'AuthService', 'MessageService', function(FeedbackService, AuthService, MessageService) {
         const feedbackCtrl = this;
         const currentUser = AuthService.getCurrentUser();
         feedbackCtrl.feedbacks = [];
@@ -26,6 +26,10 @@
         };
 
         feedbackCtrl.$onInit = function $onInit() {
+            if(!feedbackCtrl.isLoggedIn()) {
+                MessageService.showToast("Logue-se na aplicação para deixar sua avaliação");
+            }
+
             return FeedbackService.getAllFeedbacks().then(feedbacks => {
                 feedbackCtrl.feedbacks = feedbacks;
                 return feedbacks;

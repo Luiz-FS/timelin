@@ -42,7 +42,7 @@ openRouter.post('/', async (req, res) => {
     const result = await User.findByEmail(email);
 
     if (result.rowCount > 0) {
-        return res.status(401).send({msg: 'User alread exists'});
+        return res.status(401).send({msg: 'Email already exists'});
     } else {
         await User.create(name, email, password);
         const { rows } = await User.checkCredentials(email, password);
