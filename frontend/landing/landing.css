@@ -1,0 +1,32 @@
+.landing-container {
+    display: grid;
+    grid-template-rows: min-content minmax(min-content, 1fr);
+}
+
+.landing-header {
+    background-image: url('http://localhost:8080/images/landing.png');
+    background-repeat: repeat;
+    height: 768px;
+}
+
+.landing-header > div {
+    height: 100%;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: 60%;
+    background-color: rgba(255,255,255, 0.5);
+}
+
+.landing-header__description {
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.landing-footer {
+    background-color: #d4d6da;
+    padding: 16px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
