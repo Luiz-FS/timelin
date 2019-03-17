@@ -8,3 +8,8 @@
     overflow-y: auto;
     max-height: 100%;
 }
+
+.main-logo {
+    height: 45px;
+    width: 45px;
+}
