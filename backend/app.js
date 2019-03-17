@@ -13,6 +13,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 require('./controllers')(app);
 
-app.listen(3001, () => {
-  console.log('CORS-enabled web server listening on port 3001');
+const port = process.env.PORT || 3001;
+
+app.listen(port, () => {
+  console.log('CORS-enabled web server listening on port ' + port);
 });
