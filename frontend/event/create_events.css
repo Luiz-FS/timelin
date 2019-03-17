@@ -1,0 +1,27 @@
+.create-event-dialog {
+    width: 40%;
+}
+
+.create-event-container {
+    padding: 16px;
+}
+
+.create-event-container > h2 {
+    text-align: center;
+}
+
+.create-event-form-container {
+    display: grid;
+}
+
+.create-event-form-container__color-date {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 8px;
+}
+
+.create-event-form-container__actions {
+    display: grid;
+    justify-content: end;
+    grid-template-columns: auto auto;
+} 
