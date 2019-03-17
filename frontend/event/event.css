@@ -1,0 +1,29 @@
+.event-container {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 0 16px;
+    grid-template-areas: '. name date' 'description description description' '. action action';
+    cursor: pointer;
+}
+
+.event-container__name {
+    grid-area: name;
+    text-align: center;
+    word-break: break-all;
+}
+
+.event-container__date {
+    grid-area: date;
+    justify-self: end;
+    font-size: 13px;
+}
+
+.event-container__description {
+    grid-area: description;
+}
+.event-container__action {
+    grid-area: action;
+    justify-self: end;
+}

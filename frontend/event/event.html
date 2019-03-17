@@ -1,16 +1,8 @@
-<md-card style="
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    grid-template-columns: 1fr 2fr 1fr;
-    padding: 0 16px;
-    grid-template-areas: '. name date' 'description description description' '. action action';
-    cursor: pointer;"
-    ng-click="eventCtrl.showDescription()">
-    <h2 style="grid-area: name; text-align: center; word-break: break-all;">{{eventCtrl.event.name}}</h2>
-    <span style="grid-area: date; justify-self: end; font-size: 13px;">{{eventCtrl.formatDate(eventCtrl.event.event_date)}}</span>
-    <p style="grid-area: description;" ng-if="!eventCtrl.hideDescription">{{eventCtrl.event.description}}</p>
-    <div style="grid-area: action; justify-self: end;" ng-if="!eventCtrl.hideDescription">
+<md-card class="event-container" ng-click="eventCtrl.showDescription()">
+    <h2 class="event-container__name">{{eventCtrl.event.name}}</h2>
+    <span class="event-container__date">{{eventCtrl.formatDate(eventCtrl.event.event_date)}}</span>
+    <p class="event-container__description" ng-if="!eventCtrl.hideDescription">{{eventCtrl.event.description}}</p>
+    <div class="event-container__action" ng-if="!eventCtrl.hideDescription">
         <md-button ng-click="eventCtrl.confirmRemove($event)">
             REMOVER
         </md-button>
