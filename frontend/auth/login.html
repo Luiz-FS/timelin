@@ -1,5 +1,5 @@
-<div style="height: 100%; display: grid; grid-template-columns: 30% min-content 30%; align-content: center; justify-content: center; grid-column-gap: 7%;">
-    <form style="display: grid;" ng-submit="loginCtrl.register()">
+<div class="login-container">
+    <form class="signin-form" ng-submit="loginCtrl.register()">
         <md-input-container>
             <label>Nome</label>
             <input type="text" ng-model="loginCtrl.newUser.name" required/>
@@ -16,12 +16,12 @@
             <label>Confirmar senha</label>
             <input type="password" ng-model="loginCtrl.confirmPass" required/>
         </md-input-container>
-        <md-button type="submit" md-colors="{background: 'teal-500'}" style="justify-self: end;">
+        <md-button type="submit" md-colors="{background: 'teal-500'}" class="login-action-button">
             REGISTRAR
         </md-button>
     </form>
     <hr/>
-    <form style="display: grid; align-content: start;" ng-submit="loginCtrl.login()">
+    <form class="register-form" ng-submit="loginCtrl.login()">
         <md-input-container>
             <label>Email</label>
             <input type="email" ng-model="loginCtrl.credentials.email" required/>
@@ -30,7 +30,7 @@
             <label>Senha</label>
             <input type="password" ng-model="loginCtrl.credentials.password" required/>
         </md-input-container>
-        <md-button type="submit" md-colors="{background: 'teal-500'}" style="justify-self: end;">
+        <md-button type="submit" md-colors="{background: 'teal-500'}" class="login-action-button">
             ENTRAR
         </md-button>
     </form>

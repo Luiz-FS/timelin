@@ -1,0 +1,21 @@
+.login-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 30% min-content 30%;
+    align-content: center;
+    justify-content: center;
+    grid-column-gap: 7%;
+}
+
+.signin-form {
+    display: grid;
+}
+
+.register-form {
+    display: grid;
+    align-content: start;
+}
+
+.login-action-button {
+    justify-self: end;
+}
