@@ -1,5 +1,5 @@
 <div style="display: grid; grid-template-rows: min-content 1fr; height: 100%;">
-    <md-toolbar class="md-hue-2">
+    <md-toolbar class="md-hue-2" md-colors="{background: 'teal-500'}">
         <div class="md-toolbar-tools">
             <div flex md-truncate>
                 <md-button aria-label="Linha do tempo" ng-click="mainCtrl.goToTimeline()" ng-if="mainCtrl.isLoggedIn()">
@@ -14,7 +14,7 @@
             <md-button aria-label="Sair" ng-click="mainCtrl.logout()" ng-if="mainCtrl.isLoggedIn()">
                 sair
             </md-button>
-            <md-button aria-label="Autenticação" ng-if="!mainCtrl.isLoggedIn()">
+            <md-button aria-label="Autenticação" ng-click="mainCtrl.goToLogin()" ng-if="!mainCtrl.isLoggedIn()">
                 ENTRAR / REGISTRAR
             </md-button>
         </div>

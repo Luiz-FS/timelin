@@ -24,7 +24,7 @@
 
         mainCtrl.logout = function logout() {
             AuthService.logout();
-            return $state.go('app.login');
+            return $state.go('app.landing');
         };
     }]);
 })();

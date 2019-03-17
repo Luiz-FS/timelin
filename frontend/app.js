@@ -14,19 +14,19 @@
         $urlMatcherFactoryProvider.caseInsensitive(true);
 
         $stateProvider
-            .state("landing", {
-                url: '/',
-                views: {
-                    main: {
-                        templateUrl: "landing/landing.html"
-                    }
-                }
-            }).state("app", {
+            .state("app", {
                 abstract: true,
                 views: {
                     main: {
                         templateUrl: "main/main.html",
                         controller: "MainController as mainCtrl"
+                    }
+                }
+            }).state("app.landing", {
+                url: '/',
+                views: {
+                    content: {
+                        templateUrl: "landing/landing.html"
                     }
                 }
             }).state("app.login", {
@@ -77,4 +77,20 @@
             }
         };
     });
+
+    app.run(function authInterceptor(AuthService, $transitions) {
+        var ignored_routes = [
+            "app.login",
+            "app.landing"
+        ];
+
+        $transitions.onBefore({
+            to: function(state) {
+                return !(_.includes(ignored_routes, state.name)) && !AuthService.isLoggedIn();
+            }
+        }, function(transition) {
+            return transition.router.stateService.transitionTo("app.landing");
+        });
+    });
+
 })();
