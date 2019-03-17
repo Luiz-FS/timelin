@@ -5,6 +5,7 @@
     app.service('AuthService', ['$http', function($http) {
         const service = this;
         const authUri = '/api/auth';
+        const userUri = '/api/user';
 
         let currentUser;
 
@@ -18,6 +19,13 @@
         service.logout = function logout() {
             localStorage.userInfo = null;
             currentUser = null;
+        };
+
+        service.register = function register(newUser) {
+            return $http.post(userUri, newUser).then(response => {
+                currentUser = response.data.user;
+                service.save();
+            });
         };
 
         service.save = function save() {

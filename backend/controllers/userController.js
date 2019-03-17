@@ -2,6 +2,7 @@ const express = require('express');
 const authMiddleware = require('../middlewares/auth');
 const User = require('../models/user');
 const Event = require('../models/event');
+const Utils = require('../util/utils');
 
 const authRouter = express.Router();
 const openRouter = express.Router();
@@ -44,7 +45,10 @@ openRouter.post('/', async (req, res) => {
         return res.status(401).send({msg: 'User alread exists'});
     } else {
         await User.create(name, email, password);
-        return res.send({user: {name, email}});
+        const { rows } = await User.checkCredentials(email, password);
+        const user = rows[0];
+        const token = Utils.generateToken({id: user.id});
+        return res.send({user: {name, email, token}});
     }
 });
 

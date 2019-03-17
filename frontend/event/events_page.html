@@ -1,5 +1,8 @@
-<div style="display: grid; justify-content: center; grid-template-columns: 50%;">
+<div style="display: grid; justify-content: center; grid-template-columns: 50%;" ng-if="eventsCtrl.events.length !== 0">
     <event event="event" ng-repeat="event in eventsCtrl.events | orderBy: '-event_date'"></event>
+</div>
+<div style="display: grid; justify-content: center; height: 100%; grid-template-columns: 50%; align-content: center;" ng-if="eventsCtrl.events.length === 0">
+    <h1 style="color: rgba(0, 0, 0, .6)">Ainda não há eventos a serem exibidos</h1>
 </div>
 <md-fab-speed-dial class="md-fab-bottom-right">
     <md-fab-trigger>

@@ -2,17 +2,20 @@
     <md-toolbar class="md-hue-2">
         <div class="md-toolbar-tools">
             <div flex md-truncate>
-                <md-button aria-label="Linha do tempo" ng-click="mainCtrl.goToTimeline()">
+                <md-button aria-label="Linha do tempo" ng-click="mainCtrl.goToTimeline()" ng-if="mainCtrl.isLoggedIn()">
                     linha do tempo
                 </md-button>
             </div>
 
-            <md-button aria-label="Página do usuário" ng-click="mainCtrl.goToUserPage()">
+            <md-button aria-label="Página do usuário" ng-click="mainCtrl.goToUserPage()" ng-if="mainCtrl.isLoggedIn()">
                 conta
             </md-button>
 
-            <md-button aria-label="More" ng-click="mainCtrl.logout()">
+            <md-button aria-label="Sair" ng-click="mainCtrl.logout()" ng-if="mainCtrl.isLoggedIn()">
                 sair
+            </md-button>
+            <md-button aria-label="Autenticação" ng-if="!mainCtrl.isLoggedIn()">
+                ENTRAR / REGISTRAR
             </md-button>
         </div>
     </md-toolbar>

@@ -1,20 +1,20 @@
 <div style="height: 100%; display: grid; grid-template-columns: 30% min-content 30%; align-content: center; justify-content: center; grid-column-gap: 7%;">
-    <form style="display: grid;" ng-submit="loginCtrl.login()">
+    <form style="display: grid;" ng-submit="loginCtrl.register()">
         <md-input-container>
             <label>Nome</label>
-            <input type="text" ng-model="loginCtrl.credentials.nome" required/>
+            <input type="text" ng-model="loginCtrl.newUser.name" required/>
         </md-input-container>
         <md-input-container>
             <label>Email</label>
-            <input type="email" ng-model="loginCtrl.credentials.email" required/>
+            <input type="email" ng-model="loginCtrl.newUser.email" required/>
         </md-input-container>
         <md-input-container>
             <label>Senha</label>
-            <input type="password" ng-model="loginCtrl.credentials.password" required/>
+            <input type="password" ng-model="loginCtrl.newUser.password" required/>
         </md-input-container>
         <md-input-container>
             <label>Confirmar senha</label>
-            <input type="password" ng-model="loginCtrl.credentials.confirmPass" required/>
+            <input type="password" ng-model="loginCtrl.confirmPass" required/>
         </md-input-container>
         <md-button type="submit" md-colors="{background: 'teal-500'}" style="justify-self: end;">
             REGISTRAR
