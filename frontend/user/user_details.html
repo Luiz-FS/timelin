@@ -1,17 +1,11 @@
-<div style="display: grid; grid-template-rows: min-content 1fr 1fr; height: 100%;">
-    <h1 style="text-align: center;">Dados da conta</h1>
-    <div style="
-        display: grid;
-        justify-content: center;
-        grid-column-gap: 20px;
-        grid-template-columns: auto auto;
-        align-items: center;
-        grid-template-areas: 'name u-name' 'email u-email' 'action action';" ng-if="!userDetailsCtrl.isUpdatingAttributes && !userDetailsCtrl.isUpdatingPassword">
-        <b style="grid-area: name;">Nome:</b>
-        <p style="grid-area: u-name;">{{userDetailsCtrl.user.name}}</p>
-        <b style="grid-area: email;">Email:</b>
-        <p style="grid-area: u-email;">{{userDetailsCtrl.user.email}}</p>
-        <div style="grid-area: action;">
+<div class="user-acount-container">
+    <h1>Dados da conta</h1>
+    <div class="user-account__details" ng-if="!userDetailsCtrl.isUpdatingAttributes && !userDetailsCtrl.isUpdatingPassword">
+        <b class="user-account__details__name">Nome:</b>
+        <p class="user-account__details__uname">{{userDetailsCtrl.user.name}}</p>
+        <b class="user-account__details__email">Email:</b>
+        <p class="user-account__details__uemail">{{userDetailsCtrl.user.email}}</p>
+        <div class="user-account__details__action">
             <md-button ng-click="userDetailsCtrl.isUpdatingPassword = true" md-colors="{background: 'teal-500'}">
                 Mudar senha
             </md-button>
@@ -21,10 +15,7 @@
         </div>
     </div>
     <div ng-if="userDetailsCtrl.isUpdatingAttributes && !userDetailsCtrl.isUpdatingPassword">
-        <form style="
-        display: grid;
-        justify-content: center;
-        grid-template-columns: 30%;" ng-submit="userDetailsCtrl.saveUser()">
+        <form class="user-account__form-container" ng-submit="userDetailsCtrl.saveUser()">
             <md-input-container>
                 <label>Nome</label>
                 <input type="text" ng-model="userDetailsCtrl.userCopy.name" required/>
@@ -45,10 +36,7 @@
     </div>
 
     <div ng-if="userDetailsCtrl.isUpdatingPassword && !userDetailsCtrl.isUpdatingAttributes">
-        <form style="
-        display: grid;
-        justify-content: center;
-        grid-template-columns: 30%;" ng-submit="userDetailsCtrl.updatePassword()">
+        <form class="user-account__form-container" ng-submit="userDetailsCtrl.updatePassword()">
             <md-input-container>
                 <label>Senha atual</label>
                 <input type="password" ng-model="userDetailsCtrl.actualPass" required/>

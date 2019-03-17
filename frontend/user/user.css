@@ -1,0 +1,49 @@
+.user-acount-container {
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    height: 100%;
+    align-items: start;
+}
+
+.user-acount-container > h1 {
+    text-align: center;
+}
+
+.user-account__details {
+    display: grid;
+    justify-content: center;
+    margin-top: 50px;
+    grid-column-gap: 20px;
+    grid-template-columns: auto auto;
+    align-items: center;
+    grid-template-areas: 
+        'name u-name'
+        'email u-email'
+        'action action';
+}
+
+.user-account__details__name {
+    grid-area: name;
+}
+
+.user-account__details__uname {
+    grid-area: u-name;
+}
+
+.user-account__details__email {
+    grid-area: email;
+}
+
+.user-account__details__uemail {
+    grid-area: u-email;
+}
+
+.user-account__details__action {
+    grid-area: action;
+}
+
+.user-account__form-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 30%;
+}
